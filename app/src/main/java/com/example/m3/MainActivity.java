@@ -1,7 +1,7 @@
 package com.example.m3;
 
 import android.os.Bundle;
-import android.view.View;
+import android.os.Handler;import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -17,10 +17,10 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements  AdapterView.OnItemClickListener{
-   private ListView lv;
-   private ImageView iv;
-   private ArrayList<String> myList;
-   private ArrayAdapter<String> adapter;
+    private ListView lv;
+    private ImageView iv;
+    private ArrayList<String> myList;
+    private ArrayAdapter<String> adapter;
     private ArrayList<Integer> imageList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,15 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
-        Toast.makeText(this, "Click: "+myList.get(i), Toast.LENGTH_SHORT).show();
-        iv.setImageResource(imageList.get(i));
+        final Toast toast = Toast.makeText(this, "Click: "+myList.get(i), Toast.LENGTH_SHORT);
+        toast.show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        }, 700);
 
+        iv.setImageResource(imageList.get(i));
     }
 }
