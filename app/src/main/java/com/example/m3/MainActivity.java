@@ -1,5 +1,6 @@
 package com.example.m3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;import android.view.View;
 import android.widget.AdapterView;
@@ -14,9 +15,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements  AdapterView.OnItemClickListener{
+public class MainActivity extends AppCompatActivity implements  AdapterView.OnItemClickListener {
     private ListView lv;
     private ImageView iv;
     private ArrayList<String> myList;
@@ -27,6 +30,36 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+
+
+
+
+
+
+        BottomNavigationView bt=findViewById(R.id.nav);
+        bt.setOnItemSelectedListener(item -> {
+            int id=item.getItemId();
+            Intent intent=null;
+            if (id==R.id.home)
+                intent=new Intent(this, MainActivity.class);
+            if (id==R.id.add)
+                intent=new Intent(this, MainActivity2.class);
+            startActivity(intent);
+            finish();
+            return false;
+        });
+
+         String name="";
+       Intent intent=getIntent();
+       if(intent.hasExtra("name")) {
+            name=intent.getStringExtra("name");
+       }
+       myList.add(name);
+
+
+
+
         lv = findViewById(R.id.ls);
         iv = findViewById(R.id.img);
         myList = new ArrayList<>();
@@ -42,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         imageList.add(R.drawable.grape);
         imageList.add(R.drawable.kiwi);
         imageList.add(R.drawable.raspberry);
+        imageList.add(R.drawable.orange);
+
+
     }
 
     @Override

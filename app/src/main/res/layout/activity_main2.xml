@@ -5,24 +5,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity2">
 
-    <ListView
-        android:layout_marginTop="50dp"
-        android:id="@+id/ls"
+
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="#BEE0E4"
-        android:dividerHeight="10dp"
-
-         />
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/img"
-        android:layout_marginTop="400dp"
-        android:layout_marginLeft="125dp"/>
-
+        android:id="@+id/name"
+        android:layout_marginTop="50dp"
+        android:hint="Name of the image"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/num"
+        android:layout_marginTop="150dp"
+        android:hint="Number of the image"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add"
+        android:id="@+id/add"
+        android:onClick="add"
+        android:layout_marginTop="350dp"
+        android:layout_marginLeft="140dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav"
@@ -31,6 +36,4 @@
         app:menu="@menu/menu"
         android:layout_alignParentBottom="true"
         />
-
-
 </RelativeLayout>
